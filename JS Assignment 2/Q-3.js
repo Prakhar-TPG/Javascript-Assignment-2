@@ -4,9 +4,10 @@ class resourceCaller {
     }
     async fetchData() {
 
-        return fetch(this.url).then((data) => { return data.json() })
+        return await fetch(this.url).then((data) => { return data.json() })
             .then((data) => {
                 console.log(data);
+                show(data)
         })
     }
 }
@@ -27,7 +28,7 @@ class child extends resourceCaller {
                     console.log("NAME : ", name)
                     console.log("EMAIL : ", email)
                 }
-            })
+        })
     }
 }
 let myUrl = new child("https://reqres.in/api/users");
@@ -35,3 +36,20 @@ let myUrl = new child("https://reqres.in/api/users");
 myUrl.fetchData();
 //Child Class
 myUrl.fetchData1();
+
+let show = (result) => {
+    let tab =
+        `<tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>email</th>
+        </tr>`;
+    for (let i of result.data) {
+        tab += `<tr>
+            <td>${i.id} </td>
+            <td>${i.first_name + " " + i.last_name}</td>
+            <td>${i.email}</td>        
+        </tr>`;
+    }
+    document.getElementById("Q3_results").innerHTML = tab
+}
