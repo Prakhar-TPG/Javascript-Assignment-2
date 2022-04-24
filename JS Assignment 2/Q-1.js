@@ -5,26 +5,22 @@ class shape
     this.side=side;
     }
     getShape(){
-        return "Name of shape: "+ this.name+ " Number of side: "+ this.side
+        return "Name of shape: "+ this.name+ "<br>"+" Number of side: "+ this.side
     }
 }
 class rectangle extends shape
 {
-    constructor(length,width, name, side,shape="rectangle"){
+    constructor(length,width,name, side){
         super(name,side)
         this.length=length
         this.width= width
-        this.shape= shape
-
     }
     newShape(){
-        const area=this.length*this.width;
-        console.log(`Area of ${this.shape}= ` ,area);
+        return `Area of ${this.name}: `+this.length*this.width+" sq units"
     }
 }
-let c1= new rectangle(15,25)
-c1.newShape()
-
-let c2= new shape("rectangle", 4)
-console.log(c2.getShape())
-
+let c1= new rectangle(15,25,"rectangle",4)
+console.log(c1.getShape())
+console.log(c1.newShape())
+document.getElementById("Q1_results").innerHTML = c1.getShape()
+document.getElementById("Q1_results2").innerHTML = c1.newShape()
