@@ -16,7 +16,7 @@ class child extends resourceCaller {
         super(url);
     }
     async fetchData1() {
-        return fetch(this.url).then((data) => { return data.json() })
+        return await fetch(this.url).then((data) => { return data.json() })
             .then((data) => {
 
                 for (let i = 0; i < data.data.length; i++) {
